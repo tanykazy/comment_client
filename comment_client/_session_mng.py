@@ -6,18 +6,18 @@ __all__ = [""]
 
 from collections import deque
 
-from comment_client.api_info import ApiInfo
-from comment_client.login_info import LoginInfo
-from comment_client.define import MultiThreadClass
-from comment_client.define import MessageBox
-from comment_client.define import EventId
-from comment_client.define import UnitId
-from comment_client.define import BaseEnum
-from comment_client.define import BaseClass
-from comment_client.define import TimerReq
-from comment_client.define import SocketConnectReq
-from comment_client.define import SocketSendReq
-from comment_client.define import Wrapper
+from api_info import ApiInfo
+from login_info import LoginInfo
+from define import MultiThreadClass
+from define import MessageBox
+from define import EventId
+from define import UnitId
+from define import BaseEnum
+from define import BaseClass
+from define import TimerReq
+from define import SocketConnectReq
+from define import SocketSendReq
+from define import Wrapper
 
 
 class SessionMng(MultiThreadClass):

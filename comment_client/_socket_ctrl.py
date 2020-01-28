@@ -6,16 +6,16 @@ __all__ = [""]
 
 import socket
 
-from comment_client.define import Wrapper
-from comment_client.define import BaseClass
-from comment_client.define import MultiThreadClass
-from comment_client.define import Log
-from comment_client.define import MessageBox
-from comment_client.define import EventId
-from comment_client.define import UnitId
-from comment_client.define import BaseEnum
-from comment_client.define import SocketConnectCnf
-from comment_client.define import SocketSendCnf
+from define import Wrapper
+from define import BaseClass
+from define import MultiThreadClass
+from define import Log
+from define import MessageBox
+from define import EventId
+from define import UnitId
+from define import BaseEnum
+from define import SocketConnectCnf
+from define import SocketSendCnf
 
 
 class SocketCtrl(MultiThreadClass):

@@ -7,12 +7,12 @@ __all__ = [""]
 from http import cookiejar
 from urllib import request
 
-from comment_client.define import Wrapper
-from comment_client.define import MultiThreadClass
-from comment_client.define import MessageBox
-from comment_client.define import EventId
-from comment_client.define import UnitId
-from comment_client.define import BaseEnum
+from define import Wrapper
+from define import MultiThreadClass
+from define import MessageBox
+from define import EventId
+from define import UnitId
+from define import BaseEnum
 
 
 # define inner state

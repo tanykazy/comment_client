@@ -9,8 +9,8 @@ from urllib.parse import urlparse
 from xml.dom import minidom
 import time
 
-from comment_client.define import BaseClass
-from comment_client.define import Log
+from define import BaseClass
+from define import Log
 
 
 log = Log(__name__)

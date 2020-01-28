@@ -4,17 +4,17 @@
 __all__ = [""]
 
 
-from comment_client._session_mng import SessionMng
-from comment_client._socket_ctrl import SocketCtrl
-from comment_client._http_ctrl import HttpCtrl
-from comment_client._parse_info import ParseInfo
-from comment_client._timer_mng import TimerMng
-from comment_client.define import Wrapper
-from comment_client.define import MultiThreadClass
-from comment_client.define import MessageBox
-from comment_client.define import EventId
-from comment_client.define import UnitId
-from comment_client.define import BaseEnum
+from _session_mng import SessionMng
+from _socket_ctrl import SocketCtrl
+from _http_ctrl import HttpCtrl
+from _parse_info import ParseInfo
+from _timer_mng import TimerMng
+from define import Wrapper
+from define import MultiThreadClass
+from define import MessageBox
+from define import EventId
+from define import UnitId
+from define import BaseEnum
 
 
 class UnitCtrl(MultiThreadClass):

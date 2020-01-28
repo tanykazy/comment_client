@@ -2,7 +2,44 @@
 # -*- coding: utf_8 -*-
 
 
-__version__ = "0.3.6"
+#__version__ = "0.3.6"
+
+
+from define import BaseClass
+from _unit_ctrl import UnitCtrl
+
+
+class CommentClient(BaseClass):
+    """
+    フレームワークとして機能するクラス
+    現在コメント受信時に呼び出されるハンドラの登録だけが実装されている。
+    """
+    def __init__(self, handle=None, path=None):
+        self.__handle = handle
+        self.__path = path
+
+        self.__unit_ctrl = UnitCtrl(handle=self.__handle)
+
+        self.__unit_ctrl.start()
+
+    def handler(self, *args, **kwargs):
+        if self.__handle is not None:
+            self.__handle(*args, **kwargs)
+
+    def connect(self, url):
+        return self.__unit_ctrl.connect(url)
+
+    def disconnect(self):
+        return self.__unit_ctrl.disconnect()
+
+    def send(self, text):
+        return self.__unit_ctrl.send(text)
+
+    def quit(self):
+        """
+        プロセスを終了(kill)するためのメソッド
+        """
+        return self.__unit_ctrl.stop()
 
 
 if __name__ == '__main__':
@@ -13,7 +50,6 @@ if __name__ == '__main__':
     except ImportError:
         from dummy_threading import Lock
     from cmd import Cmd
-    from comment_client import client
 
     argumentParser = argparse.ArgumentParser(
         description="Client of comment for Niconico Live.",
@@ -65,9 +101,9 @@ if __name__ == '__main__':
             self.intro = 'Welcome to the comment client for Nico Live. Type help or ? to list commands.\n'
             self.prompt = '> '
 
-            self.__client = client.Client(handle=self.__handler, path=args.file)
+            self.__comment_client = comment_client.CommentClient(handle=self.__handler, path=args.file)
             # connect
-            self.__client.connect(args.url)
+            self.__comment_client.connect(args.url)
 
         def __handler(self, text, **status):
 #            print("{no:<3}: {text}".format(no=status["no"], text=text.encode(encoding="shift-jis", errors="replace").decode("shift-jis")))
@@ -87,7 +123,7 @@ if __name__ == '__main__':
                 text=text.encode(encoding="shift_jis", errors="ignore").decode(encoding="shift_jis", errors="ignore")))
 
         def quit(self):
-            self.__client.quit()
+            self.__comment_client.quit()
 
         def precmd(self, line):
             return line
@@ -99,25 +135,25 @@ if __name__ == '__main__':
             pass
 
         def postloop(self):
-            self.__client.quit()
+            self.__comment_client.quit()
 
         def default(self, line):
-            self.__client.send(line)
+            self.__comment_client.send(line)
             return False
 
         def emptyline(self):
             pass
 
         def do_hello(self, arg):
-            self.__client.connect(arg)
+            self.__comment_client.connect(arg)
             return False
 
         def do_bye(self, arg):
-            self.__client.disconnect()
+            self.__comment_client.disconnect()
             return False
 
         def do_quit(self, arg):
-            self.__client.quit()
+            self.__comment_client.quit()
             return True
 
     shell = CommentShell(completekey='tab', stdin=sys.stdin, stdout=sys.stdout)

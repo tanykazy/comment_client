@@ -6,14 +6,14 @@ __all__ = [""]
 
 from html.parser import HTMLParser
 
-from comment_client.define import BaseClass
-from comment_client.define import MultiThreadClass
-from comment_client.define import ElementInterface
-from comment_client.define import KNOWN_TAGS
-from comment_client.define import MessageBox
-from comment_client.define import EventId
-from comment_client.define import UnitId
-from comment_client.define import BaseEnum
+from define import BaseClass
+from define import MultiThreadClass
+from define import ElementInterface
+from define import KNOWN_TAGS
+from define import MessageBox
+from define import EventId
+from define import UnitId
+from define import BaseEnum
 
 
 class ParseInfo(MultiThreadClass):

@@ -4,12 +4,12 @@
 __all__ = [""]
 
 
-from comment_client.define import MultiThreadClass
-from comment_client.define import MessageBox
-from comment_client.define import EventId
-from comment_client.define import UnitId
-from comment_client.define import Wrapper
-from comment_client.define import Unique
+from define import MultiThreadClass
+from define import MessageBox
+from define import EventId
+from define import UnitId
+from define import Wrapper
+from define import Unique
 
 
 class TimerMng(MultiThreadClass):

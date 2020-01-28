@@ -16,8 +16,8 @@ import platform
 from configparser import RawConfigParser
 import sqlite3
 
-from comment_client.define import BaseClass
-from comment_client.define import Log
+from define import BaseClass
+from define import Log
 
 
 log = Log(name=__name__)
@@ -61,15 +61,17 @@ class LoginInfo(BaseClass):
             log.error("%s not found", profilesPath)
             return None
 
-        log.info("profile file path %s", profilesPath)
+        log.info("profiles file path %s", profilesPath)
 
-        # 複数プロファイルには対応していない
-        # Profile0 固定
+        # Use last Profile
         configparser = RawConfigParser()
         configparser.read(profilesPath)
-        ProfileName = configparser.get("Profile0", "Path")
 
-        cookieDir = os.path.join(firefoxPath, ProfileName)
+#        lastProfile = configparser.get("General", "StartWithLastProfile")
+        lastProfile = "0"
+        profileName = configparser.get("Profile" + lastProfile, "Path")
+
+        cookieDir = os.path.join(firefoxPath, profileName)
         cookieFile = os.path.join(cookieDir, "cookies.sqlite")
 
         if os.path.exists(cookieFile) == False:
