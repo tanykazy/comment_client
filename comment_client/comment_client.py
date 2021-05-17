@@ -2,7 +2,7 @@
 # -*- coding: utf_8 -*-
 
 
-#__version__ = "0.3.6"
+__version__ = "0.0.1"
 
 
 from define import BaseClass
@@ -53,7 +53,6 @@ if __name__ == '__main__':
 
     argumentParser = argparse.ArgumentParser(
         description="Client of comment for Niconico Live.",
-        epilog="Report bugs to http://c1083.hatenablog.com/",
 #        prog="",
         add_help=True,
         argument_default=None,
@@ -101,7 +100,8 @@ if __name__ == '__main__':
             self.intro = 'Welcome to the comment client for Nico Live. Type help or ? to list commands.\n'
             self.prompt = '> '
 
-            self.__comment_client = comment_client.CommentClient(handle=self.__handler, path=args.file)
+            #self.__comment_client = comment_client.CommentClient(handle=self.__handler, path=args.file)
+            self.__comment_client = CommentClient(handle=self.__handler, path=args.file)
             # connect
             self.__comment_client.connect(args.url)
 
